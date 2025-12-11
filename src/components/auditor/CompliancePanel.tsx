@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Suggestion, CHARACTER_LIMIT } from './types';
 import { SuggestionCard } from './SuggestionCard';
 import { TermAlert } from './TermAlert';
+import { ComplianceScore } from './ComplianceScore';
 import { AlertCircle, Sparkles, RefreshCw, FileWarning } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 interface CompliancePanelProps {
   suggestions: Suggestion[];
@@ -32,6 +32,13 @@ export function CompliancePanel({
   const termAlerts = pendingSuggestions.filter(s => s.type === 'term_alert');
   const improvements = pendingSuggestions.filter(s => s.type === 'improvement');
   const isOverLimit = characterCount > CHARACTER_LIMIT;
+
+  // Calculate compliance score
+  const totalIssues = suggestions.length;
+  const resolvedIssues = suggestions.filter(s => s.status !== 'pending').length;
+  const score = totalIssues === 0 
+    ? 100 
+    : Math.round(85 + (resolvedIssues / totalIssues) * 15);
 
   return (
     <div className="w-[320px] border-l bg-muted/20 flex flex-col h-full">
@@ -65,6 +72,17 @@ export function CompliancePanel({
           )}
         </Button>
       </div>
+
+      {/* Compliance Score */}
+      {totalIssues > 0 && (
+        <div className="p-4 border-b">
+          <ComplianceScore 
+            score={score}
+            totalIssues={totalIssues}
+            resolvedIssues={resolvedIssues}
+          />
+        </div>
+      )}
 
       <ScrollArea className="flex-1">
         <div className="p-4 space-y-4">
