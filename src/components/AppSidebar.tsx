@@ -15,6 +15,7 @@ import {
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { Separator } from '@/components/ui/separator';
+import logoGrupoMoura from '@/assets/logo-grupo-moura.png';
 
 const menuItems = [
   { title: 'Processar', url: '/', icon: FileText },
@@ -43,6 +44,15 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon" className="border-r">
       <SidebarContent>
+        {/* Logo */}
+        <div className="p-3 border-b flex justify-center">
+          {open ? (
+            <img src={logoGrupoMoura} alt="Grupo Moura" className="h-8 object-contain" />
+          ) : (
+            <img src={logoGrupoMoura} alt="Grupo Moura" className="h-6 w-6 object-contain" />
+          )}
+        </div>
+        
         <div className="p-2">
           <SidebarTrigger className="hover:bg-accent/50 transition-all duration-200 rounded-md" />
         </div>
