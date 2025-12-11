@@ -208,6 +208,89 @@ export type Database = {
         }
         Relationships: []
       }
+      project_members: {
+        Row: {
+          can_log_hours: boolean
+          can_view_all_hours: boolean
+          created_at: string
+          id: string
+          project_id: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          can_log_hours?: boolean
+          can_view_all_hours?: boolean
+          created_at?: string
+          id?: string
+          project_id: string
+          role?: string
+          user_id: string
+        }
+        Update: {
+          can_log_hours?: boolean
+          can_view_all_hours?: boolean
+          created_at?: string
+          id?: string
+          project_id?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_members_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projects: {
+        Row: {
+          code: string
+          created_at: string
+          description: string | null
+          end_date: string
+          hard_lock_vigency: boolean
+          id: string
+          manager_id: string | null
+          name: string
+          start_date: string
+          status: Database["public"]["Enums"]["project_status"]
+          updated_at: string
+          year_base: number
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          description?: string | null
+          end_date: string
+          hard_lock_vigency?: boolean
+          id?: string
+          manager_id?: string | null
+          name: string
+          start_date: string
+          status?: Database["public"]["Enums"]["project_status"]
+          updated_at?: string
+          year_base?: number
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          description?: string | null
+          end_date?: string
+          hard_lock_vigency?: boolean
+          id?: string
+          manager_id?: string | null
+          name?: string
+          start_date?: string
+          status?: Database["public"]["Enums"]["project_status"]
+          updated_at?: string
+          year_base?: number
+        }
+        Relationships: []
+      }
       saved_documents: {
         Row: {
           alerts_count: number | null
@@ -371,6 +454,132 @@ export type Database = {
         }
         Relationships: []
       }
+      time_entries: {
+        Row: {
+          activity_type: string
+          approved_at: string | null
+          approved_by: string | null
+          created_at: string
+          description: string
+          hours: number
+          id: string
+          logged_by_user_id: string | null
+          project_id: string
+          status: Database["public"]["Enums"]["time_entry_status"]
+          updated_at: string
+          user_id: string
+          work_date: string
+        }
+        Insert: {
+          activity_type?: string
+          approved_at?: string | null
+          approved_by?: string | null
+          created_at?: string
+          description: string
+          hours: number
+          id?: string
+          logged_by_user_id?: string | null
+          project_id: string
+          status?: Database["public"]["Enums"]["time_entry_status"]
+          updated_at?: string
+          user_id: string
+          work_date: string
+        }
+        Update: {
+          activity_type?: string
+          approved_at?: string | null
+          approved_by?: string | null
+          created_at?: string
+          description?: string
+          hours?: number
+          id?: string
+          logged_by_user_id?: string | null
+          project_id?: string
+          status?: Database["public"]["Enums"]["time_entry_status"]
+          updated_at?: string
+          user_id?: string
+          work_date?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "time_entries_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      time_validation_alerts: {
+        Row: {
+          alert_type: Database["public"]["Enums"]["alert_type"]
+          created_at: string
+          details: Json | null
+          document_reference_id: string | null
+          id: string
+          message: string
+          project_id: string
+          resolved: boolean
+          resolved_at: string | null
+          resolved_by: string | null
+          severity: string
+          time_entry_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          alert_type: Database["public"]["Enums"]["alert_type"]
+          created_at?: string
+          details?: Json | null
+          document_reference_id?: string | null
+          id?: string
+          message: string
+          project_id: string
+          resolved?: boolean
+          resolved_at?: string | null
+          resolved_by?: string | null
+          severity?: string
+          time_entry_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          alert_type?: Database["public"]["Enums"]["alert_type"]
+          created_at?: string
+          details?: Json | null
+          document_reference_id?: string | null
+          id?: string
+          message?: string
+          project_id?: string
+          resolved?: boolean
+          resolved_at?: string | null
+          resolved_by?: string | null
+          severity?: string
+          time_entry_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "time_validation_alerts_document_reference_id_fkey"
+            columns: ["document_reference_id"]
+            isOneToOne: false
+            referencedRelation: "saved_documents"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "time_validation_alerts_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "time_validation_alerts_time_entry_id_fkey"
+            columns: ["time_entry_id"]
+            isOneToOne: false
+            referencedRelation: "time_entries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       uploaded_files: {
         Row: {
           created_at: string
@@ -415,15 +624,57 @@ export type Database = {
           },
         ]
       }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      is_project_manager: {
+        Args: { _project_id: string; _user_id: string }
+        Returns: boolean
+      }
+      is_project_member: {
+        Args: { _project_id: string; _user_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      alert_type:
+        | "out_of_vigency"
+        | "text_inconsistency"
+        | "duplicate"
+        | "over_hours"
+      app_role: "admin" | "manager" | "collaborator"
+      project_status: "active" | "suspended" | "completed"
+      time_entry_status: "draft" | "submitted" | "approved" | "rejected"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -550,6 +801,16 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      alert_type: [
+        "out_of_vigency",
+        "text_inconsistency",
+        "duplicate",
+        "over_hours",
+      ],
+      app_role: ["admin", "manager", "collaborator"],
+      project_status: ["active", "suspended", "completed"],
+      time_entry_status: ["draft", "submitted", "approved", "rejected"],
+    },
   },
 } as const

@@ -20,6 +20,8 @@ import Arquivos from "./pages/Arquivos";
 import Compartilhado from "./pages/Compartilhado";
 import Configuracoes from "./pages/Configuracoes";
 import Auditor from "./pages/Auditor";
+import Projetos from "./pages/Projetos";
+import GestaoHoras from "./pages/GestaoHoras";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +61,8 @@ function AppContent() {
                 <Route path="/templates" element={<Templates />} />
                 <Route path="/configuracoes" element={<Configuracoes />} />
                 <Route path="/auditor" element={<Auditor />} />
+                <Route path="/projetos" element={<Projetos />} />
+                <Route path="/gestao-horas" element={<GestaoHoras />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
