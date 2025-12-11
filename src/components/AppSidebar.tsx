@@ -18,13 +18,13 @@ import { Separator } from '@/components/ui/separator';
 import logoGrupoMoura from '@/assets/logo-grupo-moura.png';
 
 const menuItems = [
-  { title: 'Processar', url: '/', icon: FileText },
-  { title: 'Auditor', url: '/auditor', icon: ClipboardCheck },
+  { title: 'Importar', url: '/', icon: FileText },
+  { title: 'Redator & Auditor', url: '/auditor', icon: ClipboardCheck },
   { title: 'Arquivos', url: '/arquivos', icon: FolderOpen },
   { title: 'Compartilhado', url: '/compartilhado', icon: Users },
   { title: 'Histórico', url: '/historico', icon: History },
-  { title: 'Dashboard', url: '/dashboard', icon: LayoutDashboard },
-  { title: 'Templates', url: '/templates', icon: FileStack },
+  { title: 'Governança P&D', url: '/dashboard', icon: LayoutDashboard },
+  { title: 'Formulários MCTI', url: '/templates', icon: FileStack },
 ];
 
 export function AppSidebar() {
