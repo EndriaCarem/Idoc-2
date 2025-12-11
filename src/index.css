@@ -71,6 +71,10 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 6% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217 91% 60%;
+
+    /* Corporate Blue - Auditor */
+    --corporate-blue: 213 56% 24%;
+    --corporate-blue-light: 213 56% 32%;
   }
 
   .loader {
@@ -166,6 +170,10 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 5% 96%;
     --sidebar-border: 240 4% 16%;
     --sidebar-ring: 217 91% 60%;
+
+    /* Corporate Blue - Auditor (dark mode) */
+    --corporate-blue: 213 56% 35%;
+    --corporate-blue-light: 213 56% 45%;
   }
 }
 
