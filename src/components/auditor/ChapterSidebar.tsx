@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils';
 import { FileText, CheckCircle2 } from 'lucide-react';
 import { Chapter } from './types';
+import logoGrupoMoura from '@/assets/logo-grupo-moura.png';
 
 interface ChapterSidebarProps {
   chapters: Chapter[];
@@ -17,6 +18,11 @@ export function ChapterSidebar({ chapters, activeChapterId, onChapterSelect }: C
 
   return (
     <div className="w-[200px] border-r bg-muted/30 flex flex-col h-full">
+      {/* Logo */}
+      <div className="p-4 border-b flex justify-center">
+        <img src={logoGrupoMoura} alt="Grupo Moura" className="h-10 object-contain" />
+      </div>
+      
       <div className="p-4 border-b">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
           Capítulos
