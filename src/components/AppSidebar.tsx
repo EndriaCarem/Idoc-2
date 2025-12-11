@@ -1,4 +1,4 @@
-import { FileText, History, LayoutDashboard, FileStack, FolderOpen, Users, Settings, LogOut, ClipboardCheck } from 'lucide-react';
+import { FileText, History, LayoutDashboard, FileStack, FolderOpen, Users, Settings, LogOut, ClipboardCheck, Clock, Briefcase } from 'lucide-react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {
   Sidebar,
@@ -20,6 +20,8 @@ import logoGrupoMoura from '@/assets/logo-grupo-moura.png';
 const menuItems = [
   { title: 'Importar', url: '/', icon: FileText },
   { title: 'Redator & Auditor', url: '/auditor', icon: ClipboardCheck },
+  { title: 'Projetos P&D', url: '/projetos', icon: Briefcase },
+  { title: 'Gestão de Horas', url: '/gestao-horas', icon: Clock },
   { title: 'Arquivos', url: '/arquivos', icon: FolderOpen },
   { title: 'Compartilhado', url: '/compartilhado', icon: Users },
   { title: 'Histórico', url: '/historico', icon: History },
