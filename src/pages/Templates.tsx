@@ -159,10 +159,10 @@ const Templates = () => {
                 Voltar
               </Button>
               <h1 className="text-2xl sm:text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Gerenciar Templates
+                Formulários MCTI
               </h1>
               <p className="text-sm sm:text-base text-muted-foreground">
-                Adicione templates de formatação personalizados para seus regimes
+                Modelos oficiais de relatórios técnicos para Lei do Bem
               </p>
             </div>
           </div>
@@ -184,10 +184,10 @@ const Templates = () => {
             <div className="p-6 sm:p-12 text-center">
               <Upload className="mx-auto h-10 w-10 sm:h-12 sm:w-12 text-muted-foreground mb-4" />
               <h3 className="text-base sm:text-lg font-semibold mb-2">
-                Adicionar Novo Template
+                Adicionar Novo Formulário
               </h3>
               <p className="text-xs sm:text-sm text-muted-foreground mb-4 px-2">
-                Arraste e solte um arquivo ou clique para selecionar
+                Arraste e solte um modelo MCTI ou clique para selecionar
               </p>
               <Input
                 type="file"
@@ -212,17 +212,17 @@ const Templates = () => {
 
           {/* Templates List */}
           <div className="space-y-3 sm:space-y-4">
-            <h2 className="text-xl sm:text-2xl font-semibold">Templates Salvos</h2>
+            <h2 className="text-xl sm:text-2xl font-semibold">Formulários Cadastrados</h2>
             
             {isLoading ? (
               <div className="text-center py-8 sm:py-12">
-                <p className="text-sm sm:text-base text-muted-foreground">Carregando templates...</p>
+                <p className="text-sm sm:text-base text-muted-foreground">Carregando formulários...</p>
               </div>
             ) : templates.length === 0 ? (
               <Card className="p-8 sm:p-12 text-center">
                 <FileText className="mx-auto h-10 w-10 sm:h-12 sm:w-12 text-muted-foreground mb-4" />
                 <p className="text-sm sm:text-base text-muted-foreground">
-                  Nenhum template cadastrado ainda
+                  Nenhum formulário MCTI cadastrado ainda
                 </p>
               </Card>
             ) : (
@@ -266,14 +266,14 @@ const Templates = () => {
       <Dialog open={showDialog} onOpenChange={setShowDialog}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Nomear Template</DialogTitle>
+            <DialogTitle>Nomear Formulário</DialogTitle>
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label htmlFor="template-name">Nome do Template</Label>
+              <Label htmlFor="template-name">Nome do Formulário</Label>
               <Input
                 id="template-name"
-                placeholder="Ex: RA Padrão 2025"
+                placeholder="Ex: Formulário RA MCTI 2025"
                 value={templateName}
                 onChange={(e) => setTemplateName(e.target.value)}
                 autoFocus

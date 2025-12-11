@@ -108,7 +108,7 @@ export function CompliancePanel({
               <div className="flex items-center gap-2">
                 <AlertCircle className="h-4 w-4 text-amber-600" />
                 <span className="text-sm font-medium text-foreground">
-                  Termos não recomendados ({termAlerts.length})
+                  Termos com Risco de Glosa ({termAlerts.length})
                 </span>
               </div>
               {termAlerts.map((suggestion) => (

@@ -74,8 +74,8 @@ const Dashboard = () => {
   return (
     <div className="container mx-auto p-3 sm:p-6 space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Dashboard</h1>
-        <p className="text-sm sm:text-base text-muted-foreground mt-2">Visão geral do sistema de formatação</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Governança P&D</h1>
+        <p className="text-sm sm:text-base text-muted-foreground mt-2">Acompanhamento dos relatórios Lei do Bem</p>
       </div>
 
       <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
@@ -130,8 +130,8 @@ const Dashboard = () => {
 
       <Card>
         <CardHeader className="p-4 sm:p-6">
-          <CardTitle className="text-lg sm:text-xl">Documentos por Template</CardTitle>
-          <CardDescription className="text-xs sm:text-sm">Distribuição de documentos processados</CardDescription>
+          <CardTitle className="text-lg sm:text-xl">Relatórios por Formulário MCTI</CardTitle>
+          <CardDescription className="text-xs sm:text-sm">Distribuição por modelo de relatório</CardDescription>
         </CardHeader>
         <CardContent className="p-4 sm:p-6 pt-0">
           {stats.documentsByTemplate.length === 0 ? (
